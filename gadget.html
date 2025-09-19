@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SelfCatalyser</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f4c36; /* Dark Green Theme */
+      color: #fff;
+    }
+
+    header {
+      background: #145a3d;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      background: #145a3d;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #e0ffe8;
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+    }
+
+    .card h2 i {
+      margin-right: 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background: #fff;
+      color: #145a3d;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #e0ffe8;
+    }
+
+    /* Progress Circle */
+    .progress-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .progress-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(#2ecc71 var(--progress, 0%), #fff var(--progress, 0%));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0f4c36;
+      position: relative;
+    }
+
+    .progress-circle::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: #145a3d;
+      border-radius: 50%;
+    }
+
+    .progress-value {
+      position: absolute;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #145a3d;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1><img src="logo.png" height="40px" width="40px" class="header">SelfCatalyster</h1>
+    <p> Gadget Goal Tracker</p>
+  </header>
+
+  <!-- Gadget Goal Tracker -->
+  <div class="container">
+    <div class="card">
+      <h2><i class="fa-solid fa-laptop"></i> Gadget Goal Tracker</h2>
+      <form id="goalForm">
+        <label for="gadget">Gadget Name:</label>
+        <input type="text" id="gadget" placeholder="e.g., Laptop">
+
+        <label for="target">Target Amount (₹):</label>
+        <input type="number" id="target" placeholder="60000">
+
+        <label for="deposit">Monthly Deposit (₹):</label>
+        <input type="number" id="deposit" placeholder="5000">
+
+        <label for="saved">Amount Already Saved (₹):</label>
+        <input type="number" id="saved" value="0">
+
+        <button type="button" class="btn" onclick="updateGoal()">Track Goal</button>
+      </form>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="card progress-wrapper">
+      <h2><i class="fa-solid fa-chart-pie"></i> Progress</h2>
+      <div class="progress-circle" id="progressCircle" style="--progress: 0%">
+        <div class="progress-value" id="progressValue">0%</div>
+      </div>
+      <p id="progressText">No goal set yet.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; SelfCatalyser • Your Journey to Personal Growth</p>
+  </footer>
+
+  <script>
+    function updateGoal() {
+      const gadget = document.getElementById("gadget").value || "Gadget";
+      const target = parseInt(document.getElementById("target").value) || 0;
+      const deposit = parseInt(document.getElementById("deposit").value) || 0;
+      const saved = parseInt(document.getElementById("saved").value) || 0;
+
+      if (target <= 0 || deposit <= 0) {
+        alert("⚠️ Please enter valid target and deposit values.");
+        return;
+      }
+
+      const progress = Math.min((saved / target) * 100, 100);
+      const remaining = target - saved;
+      const months = Math.ceil(remaining / deposit);
+
+      document.getElementById("progressValue").innerText = `${progress.toFixed(1)}%`;
+      document.getElementById("progressCircle").style.setProperty("--progress", `${progress}%`);
+      document.getElementById("progressText").innerText =
+        `${gadget}: ₹${saved} / ₹${target} saved. ETA: ~${months} months.`;
+    }
+  </script>
+</body>
+</html>

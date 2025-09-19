@@ -1,0 +1,381 @@
+/* Color Palette & Font Styles */
+:root {
+    --light-green: #E6F4E6;
+    --medium-green: #6B946E;
+    --dark-green: #3D5A40;
+    --white: #FFFFFF;
+    --text-color: #333;
+    --accent-color: #7BB980;
+    --font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--white);
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--white);
+    padding: 15px 50px;
+    border-bottom: 2px solid var(--light-green);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-logo img {
+    height: 30px;
+    width: auto;
+}
+
+.brand-logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dark-green);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--medium-green);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--dark-green);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-signup, .btn-login {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-signup {
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+.btn-signup:hover {
+    background-color: var(--medium-green);
+}
+
+.btn-login {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.btn-login:hover {
+    background-color: var(--dark-green);
+}
+
+/* Hero Section */
+#hero {
+    background-color: var(--light-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+    padding: 0 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 500px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.5; /* Added line-height for better readability */
+}
+
+.btn-primary {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 15px; /* Added space between text and button */
+}
+
+.btn-primary:hover {
+    background-color: var(--medium-green);
+}
+
+.hero-image {
+    width: 250px;
+    height: auto;
+    margin-left: 20px;
+}
+
+/* New Sections & Card Styles */
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 36px;
+    color: var(--dark-green);
+    margin-bottom: 50px;
+}
+
+.card-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--light-green);
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: left;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--dark-green);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+
+.btn-card {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-card:hover {
+    background-color: var(--medium-green);
+}
+
+/* Call to Action Section */
+#cta-bottom {
+    background-color: var(--medium-green);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+#cta-bottom h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+#cta-bottom p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--dark-green);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    #hero {
+        flex-direction: column;
+        padding: 60px 20px;
+        min-height: auto;
+    }
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+    .hero-image {
+        width: 80%;
+        max-width: 300px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .nav-links, .auth-buttons {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .hero-content h1 {
+        font-size: 36px;
+    }
+    .hero-content {
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logo a {
+        font-size: 20px;
+    }
+    .hero-content h1 {
+        font-size: 28px;
+    }
+}
+
+
+
+
+
+/* ------------------------------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+}
+
+.feature-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 80px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-section.reverse-layout {
+    flex-direction: row-reverse;
+}
+
+.text-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.text-content h2 {
+    color: #555;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    color: #777;
+    line-height: 1.6;
+}
+
+.image-content {
+    flex: 1;
+    max-width: 200px;
+    text-align: center;
+}
+
+.image-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .feature-section,
+    .feature-section.reverse-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .feature-section img {
+        margin-top: 20px;
+    }
+}

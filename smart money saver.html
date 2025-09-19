@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SelfCatalyster</title>
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b3d2e; /* Dark Green */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      align-items: center;
+      display: flex;
+      margin-bottom: 10px;
+      justify-content: space-evenly;
+      color: #ffffff;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #145a3d; /* lighter green */
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #e0ffe8;
+    }
+    
+    .btn {
+      background: #ffffff;
+      color: #145a3d;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #e0ffe8;
+    }
+
+    .jars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+    }
+    .btn100 {
+        background: #ffffff;
+      color: #145a3d;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width:100px ;
+    }
+
+    .jar {
+      background: #0f4c36;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .jar i {
+      font-size: 25px;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .progress {
+      background: #fff;
+      height: 8px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+    .progress-bar {
+      background: #2ecc71;
+      height: 8px;
+      width: 30%;
+    }
+    .header {
+    justify-content: space-between;
+    padding-left: 10px;
+    }
+    .inputbox{
+      background: #fff;
+      color: #145a3d;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 90%;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      justify-content: space-evenly;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #145a3d;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #e0ffe8;
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+    }
+
+    .card h2 i {
+      margin-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1><img src="logo.png" height="40px" width="40px" class="header">SelfCatalyster</h1>
+  <p>SMS - Smart Money Saver</p>
+
+  <div class="container">
+
+    <!-- Daily Saving Streak -->
+    <div class="card" id="daily-saving">
+      <h2><i class="fa-solid fa-seedling"></i> Daily Saving Streak</h2>
+      <p>"Save a little, grow a lot" 🌱</p>
+      <p>Streak: <span id="streak">0</span> days🔥</p>
+      <button class="btn" onclick="addStreak()">+ Save ₹10</button>
+    </div>
+
+    <!-- Daily Budget -->
+    <div class="card" id="daily-budget">
+      <h2><i class="fa-solid fa-coins"></i> Daily Budget</h2>
+      <p>Limit: ₹<span id="budget-limit">500</span></p>
+      <p>Spent: ₹<span id="spent">0</span></p>
+      <input type="number" class="btn100" placeholder="Add Expense ₹0.00">
+      <button class="btn" onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <!-- Saving Jars
+    <div class="card" id="saving-jars">
+      <h2><i class="fa-solid fa-jar"></i> Saving Jars</h2>
+      <div class="jars">
+        <div class="jar">
+          <i class="fa-solid fa-house"></i>
+          <p>Family</p>
+          <div class="progress"><div class="progress-bar" style="width: 40%"></div></div>
+        </div>
+        <div class="jar">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <p>Education</p>
+          <div class="progress"><div class="progress-bar" style="width: 20%"></div></div>
+        </div>
+        <div class="jar">
+          <i class="fa-solid fa-briefcase"></i>
+          <p>Business</p>
+          <div class="progress"><div class="progress-bar" style="width: 50%"></div></div>
+        </div>
+        <div class="jar">
+          <i class="fa-solid fa-plane"></i>
+          <p>Travel</p>
+          <div class="progress"><div class="progress-bar" style="width: 10%"></div></div>
+        </div>
+        <div class="jar">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <p>Loan</p>
+          <div class="progress"><div class="progress-bar" style="width: 60%"></div></div>
+        </div>
+        <div class="jar">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <p>Shopping</p>
+          <div class="progress"><div class="progress-bar" style="width: 30%"></div></div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Utilities Section -->
+    <div class="card">
+      <h2><i class="fa-solid fa-credit-card"></i>Utilities</im></h2>
+      <label for="electricity">Electricity Bill (₹):</label>
+      <input type="number" class="inputbox" id="electricity" placeholder="Enter amount">
+
+      <label for="gas">Gas Bill (₹):</label>
+      <input type="number" class="inputbox" id="gas" placeholder="Enter amount">
+
+      <label for="mobile">Mobile Recharge (₹):</label>
+      <input type="number" class="inputbox" id="mobile" placeholder="Enter amount">
+
+      <label for="other">Other Utilities (₹):</label>
+      <input type="number" class="inputbox" id="other" placeholder="Enter amount">
+
+      <button class="btn"><i class="fa-solid fa-check"></i> Save Utilities</button>
+    </div>
+
+    <!-- Rent Section -->
+    <div class="card">
+      <h2><i class="fa-solid fa-house"></i> Rent</h2>
+      <label for="creditFrom">Credit From (Source):</label>
+      <input type="text" class="inputbox" id="creditFrom" placeholder="e.g., Salary Account">
+
+      <label for="debitFrom">Debit To (Landlord / Bank):</label>
+      <input type="text" class="inputbox" id="debitFrom" placeholder="e.g., Landlord Name">
+
+      <label for="rentAmount">Rent Amount (₹):</label>
+      <input type="number" class="inputbox" id="rentAmount" placeholder="Enter amount">
+
+      <button class="btn"><i class="fa-solid fa-check"></i> Save Rent Details</button>
+    </div>
+
+    <!-- Groceries Section -->
+    <div class="card">
+      <h2><i class="fa-solid fa-cart-shopping"></i> Groceries</h2>
+      <label for="groceries">Groceries Expense (₹):</label>
+      <input type="number" class="inputbox" id="groceries" placeholder="Enter amount">
+
+      <label for="store">Store / Shop:</label>
+      <input type="text" class="inputbox" id="store" placeholder="e.g., Local Market, Supermarket">
+
+      <label for="date">Purchase Date:</label>
+      <input type="date" class="inputbox" id="date">
+
+      <button class="btn"><i class="fa-solid fa-check"></i> Save Groceries</button>
+    </div>
+
+  </div>
+
+  
+
+  </div>
+
+  <script>
+    let streak = 0;
+    function addStreak() {
+      streak++;
+      document.getElementById("streak").innerText = streak;
+    }
+
+    let spent = 0;
+    const limit = 500;
+    function addExpense(amount) {
+      spent += amount;
+      document.getElementById("spent").innerText = spent;
+      if(spent >= limit) {
+        alert("⚠️ You are about to reach your daily budget limit!");
+      }
+    }
+    <!-- Footer -->
+  <footer>
+    <p>&copy; SelfCatalyser • Basic Expenses Report Tracker</p>
+  </footer>
+
+    
+  </script>
+</body>
+</html>
